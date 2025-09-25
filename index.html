@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mel Jay Lagrama - Portfolio</title>
+  <style>
+    :root {
+      /* Default Dark Mode */
+      --bg-color: #111;
+      --text-color: #f5f5f5;
+      --card-bg: #1a1a1a;
+      --accent: #00ffcc;
+      --bg-image: url("img/4.png"); /* Dark mode background */
+    }
+
+    /* Light Mode (from image palette) */
+    body.light-mode {
+      --bg-color: #e6e8eb;
+      --text-color: #2e2e2e;
+      --card-bg: #dce0e5;
+      --accent: #ff8552;
+      --bg-image: url("img/3.png"); /* Light mode background */
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: var(--bg-color) no-repeat center center fixed;
+      background-size: cover;
+      background-image: var(--bg-image);
+      color: var(--text-color);
+      display: flex;
+      height: 100vh;
+      transition: background 0.3s, color 0.3s, background-image 0.3s;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      width: 30%;
+      min-width: 280px;
+      background: rgba(0, 0, 0, 0.7);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 20px;
+      transition: background 0.3s;
+    }
+
+    body.light-mode .sidebar {
+      background: rgba(255, 255, 255, 0.7);
+    }
+
+    .sidebar img {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid var(--accent);
+      animation: glow 2s infinite alternate;
+      transition: all 0.5s ease;
+      cursor: pointer;
+    }
+
+    @keyframes glow {
+      from {
+        filter: drop-shadow(0 0 5px var(--accent)) drop-shadow(0 0 10px var(--accent));
+      }
+      to {
+        filter: drop-shadow(0 0 15px var(--accent)) drop-shadow(0 0 30px var(--accent));
+      }
+    }
+
+    .name {
+      margin-top: 20px;
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: var(--text-color);
+    }
+
+    .role {
+      font-size: 1rem;
+      color: var(--accent);
+      margin-bottom: 20px;
+    }
+
+    .social-links a {
+      margin: 0 10px;
+      color: var(--accent);
+      text-decoration: none;
+      font-size: 1.2rem;
+      transition: 0.3s;
+    }
+
+    .social-links a:hover {
+      color: var(--text-color);
+    }
+
+    /* Right Content */
+    .content {
+      flex: 1;
+      overflow-y: auto;
+      padding: 40px;
+      background: rgba(0, 0, 0, 0.5);
+      transition: background 0.3s;
+    }
+
+    body.light-mode .content {
+      background: rgba(255, 255, 255, 0.6);
+    }
+
+    h1, h2 {
+      color: var(--accent);
+    }
+
+    .section {
+      margin-bottom: 60px;
+    }
+
+    .services {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+    }
+
+    .service-card {
+      background: var(--card-bg);
+      padding: 20px;
+      border-radius: 10px;
+      transition: background 0.3s;
+    }
+
+    .service-card h3 {
+      margin-top: 0;
+      color: var(--text-color);
+    }
+
+    /* Toggle Button */
+    .toggle-btn {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 1rem;
+      background: var(--accent);
+      color: #000;
+      transition: 0.3s;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <img src="img/1.png" alt="Profile Picture" id="profilePic">
+    <div class="name">Mel Jay Lagrama</div>
+    <div class="role">Developer | Artist</div>
+    <div class="social-links">
+      <a href="#">🌐</a>
+      <a href="#">💼</a>
+      <a href="#">📷</a>
+      <a href="#">♫</a>
+    </div>
+  </div>
+
+  <!-- Right Content -->
+  <div class="content">
+    <button class="toggle-btn" onclick="toggleMode()">🌙 Dark Mode</button>
+
+    <div class="section" id="about">
+      <h1>About Me</h1>
+      <p>
+        I'm the <strong>back-to-back-to-back poster-making champion</strong>.  
+        I’ve won <strong>4 times in a single day</strong> with themes:  
+      </p>
+      <ul>
+        <li>"Love, Peace, and Understanding"</li>
+        <li>"The Blazing Courage"</li>
+        <li>"Nutrition ay Yaman"</li>
+        <li>"Indak Yaman ni koya K"</li>
+      </ul>
+    </div>
+
+    <div class="section" id="services">
+      <h2>My Services</h2>
+      <div class="services">
+        <div class="service-card">
+          <h3>Development</h3>
+          <p>Building custom-tailored websites and IoT solutions.</p>
+        </div>
+        <div class="service-card">
+          <h3>Poster Art</h3>
+          <p>Creative artwork and poster designs for events and competitions.</p>
+        </div>
+        <div class="service-card">
+          <h3>Database</h3>
+          <p>SQL database setup, management, and integration with apps.</p>
+        </div>
+        <div class="service-card">
+          <h3>Data Security</h3>
+          <p>Best practices for securing your data and systems.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="section" id="projects">
+      <h2>Projects</h2>
+      <ul>
+        <li>IoT-Based Water Monitoring System</li>
+        <li>Automated Fishpond Feeding System</li>
+        <li>Personal Portfolio Website</li>
+        <li>Poster Series: "Love, Peace, and Understanding"</li>
+      </ul>
+    </div>
+
+    <div class="section" id="contact">
+      <h2>Contact</h2>
+      <p>Email: <a href="mailto:MELMEL@kingring.com">MELMEL@kingring.com</a></p>
+      <p>GitHub: <a href="#">github.com/yourusername</a></p>
+      <p>LinkedIn: <a href="#">linkedin.com/in/yourusername</a></p>
+    </div>
+  </div>
+
+  <script>
+    // Image toggle on click
+    const profilePic = document.getElementById("profilePic");
+    let toggled = false;
+    profilePic.addEventListener("click", () => {
+      if (toggled) {
+        profilePic.src = "img/1.png"; // Dark mode image
+      } else {
+        profilePic.src = "img/2.png"; // Light mode image
+      }
+      toggled = !toggled;
+    });
+
+    // Dark/Light mode toggle
+    function toggleMode() {
+      document.body.classList.toggle("light-mode");
+      const btn = document.querySelector(".toggle-btn");
+      if (document.body.classList.contains("light-mode")) {
+        btn.textContent = "☀️ Light Mode";
+        profilePic.src = "img/2.png"; // auto-switch to light profile
+        toggled = true;
+      } else {
+        btn.textContent = "🌙 Dark Mode";
+        profilePic.src = "img/1.png"; // auto-switch to dark profile
+        toggled = false;
+      }
+    }
+  </script>
+
+</body>
+</html>
